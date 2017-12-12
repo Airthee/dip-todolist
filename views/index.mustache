@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoList</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="reload">TODO List</span>
+      </div>
+      <div class="content">
+        <fieldset>
+          <legend>Liste des tâches</legend>
+          <form method="post" data-action="delete">
+            <table>
+              <tr>
+                <td>
+                    {{#list}}
+                      <div id="listTaches">
+                        <label>
+                          <input type="checkbox" name="toDelete[]" value="{{ id }}">
+                          {{ libelle }}
+                        </label>
+                      </div>
+                    {{/list}}
+                </td>
+                <td valign="bottom" class="align-right">
+                  <input class="btn btn-danger" type="submit" value="Supprimer">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </fieldset>
+        <fieldset>
+          <legend>Ajouter une tâche</legend>
+          <form method="post" data-action="add">
+            <table>
+              <tr>
+                <td>
+                  <div>
+                    <input class="wallow" id="inputLibelle" type="text" name="libelle" autocomplete="off" placeholder="Saisir une tâche...">
+                  </div>
+                </td>
+                <td class="align-right">
+                  <input class="btn btn-success" type="submit" value="Ajouter">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </fieldset>
+      </div>
+      <div class="footer">
+        
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+  </body>
+</html>
