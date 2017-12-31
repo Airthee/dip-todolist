@@ -1,0 +1,13 @@
+<td>
+  {{#list}}
+    <div class="todoItem">
+      <label>
+        <input type="checkbox" name="toDelete" value="{{ id }}">
+        {{ libelle }}
+      </label>
+    </div>
+  {{/list}}
+</td>
+<td valign="bottom" class="align-right">
+  <input class="btn btn-danger" type="submit" value="Supprimer">
+</td>

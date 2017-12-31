@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>TodoList</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   </head>
   <body>
     <div class="container">
@@ -12,21 +13,11 @@
       <div class="content">
         <fieldset>
           <legend>Liste des tâches</legend>
-          <form method="post" data-action="delete">
+          <form method="post" class="form-ajax reload-list-on-submit" data-action="delete">
             <table>
-              <tr>
+              <tr id="listContainer">
                 <td>
-                    {{#list}}
-                      <div id="listTaches">
-                        <label>
-                          <input type="checkbox" name="toDelete[]" value="{{ id }}">
-                          {{ libelle }}
-                        </label>
-                      </div>
-                    {{/list}}
-                </td>
-                <td valign="bottom" class="align-right">
-                  <input class="btn btn-danger" type="submit" value="Supprimer">
+                  Aucune tâche pour le moment
                 </td>
               </tr>
             </table>
@@ -34,7 +25,7 @@
         </fieldset>
         <fieldset>
           <legend>Ajouter une tâche</legend>
-          <form method="post" data-action="add">
+          <form method="post" class="form-ajax reload-list-on-submit" data-action="add">
             <table>
               <tr>
                 <td>
@@ -57,6 +48,6 @@
 
     <!-- JS -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="/assets/js/script.js"></script>
   </body>
 </html>

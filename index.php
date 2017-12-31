@@ -1,13 +1,17 @@
 <?
-  require_once 'controller/connect.php';
+require_once 'vendor/autoload.php';
+require_once 'controller/connect.php';
 
-	// Récupération des éléments à afficher
-  $result = $pdo->query("SELECT * FROM todolist");
+// Mustach Engine
+$mustache = new Mustache_Engine(array(
+  'loader'=>new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views'),
+));
 
-  // Rend la vue
-  $m = new Mustache_Engine(array(
-    'loader'=>new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views'),
-  ));
-  echo $m->render('index', array(
-    'list'=>$result,
-  ));
+// Traitement page
+$page = isset($_GET['page']) ? $_GET['page'] : 'index';
+$filename = sprintf('controller/%s.php', $page);
+if (!file_exists($filename)){
+  header('HTTP/1.0 404 Not Found');
+  exit;
+}
+include $filename;

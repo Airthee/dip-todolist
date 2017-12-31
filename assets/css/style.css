@@ -65,3 +65,21 @@ table{
 html{
 	font-family: "Arial", "Helvetica", "sans-serif";
 }
+
+.http-status-container{
+	background-color: #ffffff;
+}
+
+.http-status-container img{
+	display: block;
+	margin: auto;
+	height: 500px;
+}
+
+.http-status-title{
+	font-size: 3em;
+}
+
+.http-status-message{
+	font-size: 2em;
+}
