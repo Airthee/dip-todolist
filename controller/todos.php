@@ -1,4 +1,11 @@
 <?
+  // Vérification de la méthode de récupération de la page 
+  if($_SERVER['REQUEST_METHOD']!="POST"){
+    header('HTTP/1.0 403 Forbidden');
+    exit;
+  }
+
+  // Résultat à retourner
   $response = array(
     'success'=>false,
     'message'=>'',
@@ -14,6 +21,8 @@
 
     // Traitement de l'action
     switch($action){
+
+      // Ajout d'une tâche à la liste
       case 'add':
         $query = "INSERT INTO todolist (`libelle`) VALUES (?)";
         $statement = $pdo->prepare($query);
@@ -21,6 +30,7 @@
         $result = $statement->execute();
       break;
 
+      // Suppression d'une tâche de la liste
       case 'delete':
         foreach($data['toDelete'] as $d){
           $query = "DELETE FROM todolist WHERE id = ?";
@@ -30,6 +40,7 @@
         }
       break;
 
+      // Récupération de la liste des tâches
       case 'get':
         $result = $pdo->query("SELECT * FROM todolist");
         if($result)
@@ -38,6 +49,7 @@
           throw new Exception("Erreur lors de la récupération des todos");
       break;
 
+      // Récupération de la liste des tâches au format html généré par views/list.mustache
       case 'getHtml':
         $result = $pdo->query("SELECT * FROM todolist");
         if($result){
@@ -51,6 +63,7 @@
           throw new Exception("Erreur lors de la récupération des todos");
       break;
 
+      // Action non prise en compte
       default:
         throw new Exception(sprintf("L'action %s n'est pas prise en compte", $action));
     }
