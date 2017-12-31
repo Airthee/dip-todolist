@@ -1,0 +1,2 @@
+<?
+  echo $mustache->render('index');

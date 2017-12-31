@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoList</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="reload">TODO List</span>
+      </div>
+      <div class="content">
+        <fieldset>
+          <legend>Liste des tâches</legend>
+          <form method="post" class="form-ajax reload-list-on-submit" data-action="delete">
+            <table>
+              <tr id="listContainer">
+                <td>
+                  Aucune tâche pour le moment
+                </td>
+              </tr>
+            </table>
+          </form>
+        </fieldset>
+        <fieldset>
+          <legend>Ajouter une tâche</legend>
+          <form method="post" class="form-ajax reload-list-on-submit" data-action="add">
+            <table>
+              <tr>
+                <td>
+                  <div>
+                    <input class="wallow" id="inputLibelle" type="text" name="libelle" autocomplete="off" placeholder="Saisir une tâche...">
+                  </div>
+                </td>
+                <td class="align-right">
+                  <input class="btn btn-success" type="submit" value="Ajouter">
+                </td>
+              </tr>
+            </table>
+          </form>
+        </fieldset>
+      </div>
+      <div class="footer">
+        
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+  </body>
+</html>
