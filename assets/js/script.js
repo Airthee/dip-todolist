@@ -146,13 +146,28 @@
 
     // Callback success si classe reload-list-on-submit
     if(this.classList.contains('reload-list-on-submit')){
-      console.log("ICI");
       data.success = loadList;
     }
 
     // Envoi le formulaire
     ajax(data);
   };
+
+  /**
+   * Au changement de la valeur d'un .jscolor on change l'attribut CSS renseigné
+   */
+  var initJSColor = function(){
+    var jscolor = document.getElementsByClassName('jscolor');
+    var element;
+    for(var i=0; i<jscolor.length; i++){
+      element = jscolor[i];
+      var dataValue = element.attributes['data-target'].value;
+
+      // Récupère la valeur depuis les cookies
+      var value = getCookie('color.'+dataValue);
+      // element.jscolor.fromString(value);
+    }
+  }
 
   /**
    * A la soumission d'un formulaire on envoi les données en AJAX
@@ -191,4 +206,50 @@
   // Lancement du script
   loadList();
   initEvents();
+  initJSColor();
 })();
+
+/********************** Fonctions ********************/
+function onJSColorChanged($this){
+  var element = $this.valueElement;
+  var dataValue = element.attributes['data-target'].value;
+  var split = dataValue.split('.');
+  var targetSelect = split[0];
+  var cssAttribut = split[1];
+  var color = '#'+element.jscolor;
+
+  // Change le css
+  var targets = document.getElementsByClassName(targetSelect);
+  var target;
+  for(var j=0; j<targets.length; j++){
+    target = targets[j];
+    target.style[cssAttribut] = color;
+  }
+
+  // Ecrit les cookies
+  setCookie('color.'+dataValue, color);
+}
+
+function getCookie(name){
+  console.log("Récupération de " +name);
+  var name = name + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
+  }
+  return "";
+}
+
+function setCookie(name, value){
+  var d = new Date();
+  d.setTime(d.getTime() + (30*24*60*60*1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = name+"="+value+";" + expires;
+}

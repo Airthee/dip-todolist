@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   </head>
-  <body>
+  <body class="body">
     <div class="container">
       <div class="header">
         <span class="reload">TODO List</span>
@@ -42,11 +42,14 @@
         </fieldset>
       </div>
       <div class="footer">
-        
+        <input title="Couleur de fond 1" id="colorbody" class="jscolor {onFineChange:'onJSColorChanged(this)'}" value="5D3148" data-target="body.backgroundColor">
+        <input title="Couleur de fond 2" id="colorback" class="jscolor {onFineChange:'onJSColorChanged(this)'}" value="FFFBD8" data-target="container.backgroundColor">
+        <input title="Couleur de la bordure" id="colorborder" class="jscolor {onFineChange:'onJSColorChanged(this)'}" value="016B79" data-target="container.borderColor">
       </div>
     </div>
 
     <!-- JS -->
+    <script type="text/javascript" src="/assets/js/jscolor.min.js"></script>
     <script type="text/javascript" src="/assets/js/script.js"></script>
   </body>
 </html>

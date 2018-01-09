@@ -49,6 +49,14 @@ table{
 	width: 100%;
 }
 
+.footer{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	left: 0px;
+	background-color: #000000;
+}
+
 .align-right{
 	text-align: right;
 }
@@ -60,6 +68,10 @@ table{
 
 .wallow{
 	width: 100%;
+}
+
+.jscolor{
+	width: 50px;
 }
 
 html{
