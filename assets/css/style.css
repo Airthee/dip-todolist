@@ -28,16 +28,16 @@ fieldset{
 }
 
 body{
-	background-color: #3b2323;
+	background-color: #5D3148;
 }
 
 .container{
 	margin: auto;
 	width: 86%;
-	background-color: #ffffcf; 
+	background-color: #FFFBD8; 
 	min-height: 100%;
 	padding: 10px 20px;
-	border: 2px solid #107c89;
+	border: 2px solid #016B79;
 }
 
 .header{
