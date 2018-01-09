@@ -165,7 +165,6 @@
 
       // Récupère la valeur depuis les cookies
       var value = getCookie('color.'+dataValue);
-      // element.jscolor.fromString(value);
     }
   }
 
@@ -231,7 +230,6 @@ function onJSColorChanged($this){
 }
 
 function getCookie(name){
-  console.log("Récupération de " +name);
   var name = name + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
   var ca = decodedCookie.split(';');
