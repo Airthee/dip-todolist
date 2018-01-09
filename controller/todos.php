@@ -32,12 +32,13 @@
 
       // Suppression d'une tâche de la liste
       case 'delete':
-        foreach($data['toDelete'] as $d){
-          $query = "DELETE FROM todolist WHERE id = ?";
-          $statement = $pdo->prepare($query);
-          $statement->bindParam(1, $d);
-          $result = $statement->execute(); 
-        }
+        $toDelete = is_array($data['toDelete']) ? $data['toDelete'] : array($data['toDelete']);
+
+        // Exécution de la requête
+        $strReplace = implode(',', str_split(str_repeat('?', count($toDelete)))); // Création de la chaine pour le IN (?, ?, ?, ...)
+        $query = sprintf("DELETE FROM todolist WHERE id IN (%s)", $strReplace); // Ajout des paramètres pour la requête préparée
+        $statement = $pdo->prepare($query); // Ajout des valeurs des paramètres
+        $result = $statement->execute($toDelete); // Exécution de la requête
       break;
 
       // Récupération de la liste des tâches
